@@ -6,4 +6,9 @@ Essa é basicamente uma api de delivery de pizza básica para o projeto web que 
 
 # Endpoints
 
-em breve...
+|Verbo|Tipo da requisição|Descrição|
+|--|:--:|--|
+|user/{id}|GET|Obtém os dados de um usuário|
+|user|POST|Cria um novo usuário|
+|user|PUT|Atualiza os dados de um usuário|
+|user|DELETE|Apaga um usuário|
