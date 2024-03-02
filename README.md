@@ -12,7 +12,7 @@ Verbo|Tipo da requisição|Descrição|Exemplo de uso|
 |user|POST|Cria um novo usuário| [Criar usuário](#2-criar-usuário) |
 |user|PUT|Atualiza os dados de um usuário| [Atualizar usuário](#3-atualizar-usuário) |
 |user/{id}|DELETE|Apaga um usuário| [Apagar usuário](#4-apagar-usuário) |
-|login|POST|Realiza a autenticação de um usuário| ▼ |
+|login|POST|Realiza a autenticação de um usuário| [Autenticar](#5-autenticar) |
 
 ## Demonstração/ exemplos dos endpoints
 
