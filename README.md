@@ -10,8 +10,8 @@ Verbo|Tipo da requisição|Descrição|Exemplo de uso|
 |--|:--:|--|:--:|
 |user/{id}|GET|Obtém os dados de um usuário| [Obter usuário](#1-obter-usuário) | 
 |user|POST|Cria um novo usuário| [Criar usuário](#2-criar-usuário) |
-|user|PUT|Atualiza os dados de um usuário| ▼ |
-|user|DELETE|Apaga um usuário| ▼ |
+|user|PUT|Atualiza os dados de um usuário| [Atualizar usuário](#3-atualizar-usuário) |
+|user/{id}|DELETE|Apaga um usuário| [Apagar usuário](#4-apagar-usuário) |
 |login|POST|Realiza a autenticação de um usuário| ▼ |
 
 ## Demonstração/ exemplos dos endpoints
@@ -50,9 +50,67 @@ Request Body:
 Retorno:
 ```json
 {
-  "id": 2753545612,
+  "id_clie": 2753545612,
   "nm_clie": "Pedro",
   "email_clie": "psbm@hotmail.com",
   "senha_clie": "psbm2024"
+}
+```
+
+---
+
+### 3-atualizar usuário
+UPDATE `user`
+
+Request Body:
+```json
+{
+  "id_clie": 2753545612
+  "nm_clie": "Carlos",
+  "email_clie": "Carlos@hotmail.com",
+  "senha_clie": "crls2024"
+}
+```
+
+Retorno:
+```json
+{
+  "id_clie": 2753545612
+  "nm_clie": "Carlos",
+  "email_clie": "Carlos@hotmail.com",
+  "senha_clie": "crls2024"
+}
+```
+
+---
+
+### 4-apagar usuário
+DELETE `user/2753545612`
+
+##
+|Status code|Mensagem|
+|--|--|
+|200|Usuário apagado com sucesso|
+|404|Usuário não encontrado|
+
+---
+
+### 5-autenticar
+POST `login`
+
+Request Body:
+```json
+{
+  "email_clie": "psbm@hotmail.com",
+  "senha_clie": "psbm2024"
+}
+```
+
+Retorno:
+```json
+{
+  "id_clie": 2753545612,
+  "nm_clie": "Pedro",
+  "email_clie": "psbm@hotmail.com",
 }
 ```
