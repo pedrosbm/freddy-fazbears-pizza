@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,17 +12,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.psbm.fazbearentertainment.models.Cliente;
 
-@Controller
+@RestController
+@RequestMapping(path = "/user")
 public class UserController {
     protected List<Cliente> repository = new ArrayList<>();
 
 
-    @GetMapping(path = "user/{id}")
+    @GetMapping(path = "/{id}")
     @ResponseBody
     public ResponseEntity<Optional<Cliente>> getUser(@PathVariable long id){
         try{
@@ -37,7 +37,7 @@ public class UserController {
         }
     }
 
-    @PostMapping(path = "user")
+    @PostMapping
     @ResponseBody
     public ResponseEntity<String> newUser(@RequestBody Cliente cliente){
         try{
@@ -50,7 +50,7 @@ public class UserController {
         }
     }
 
-    @PutMapping(path = "user")
+    @PutMapping
     @ResponseBody
     public ResponseEntity<String> editUser(@RequestBody Cliente cliente){
         try{
@@ -63,7 +63,7 @@ public class UserController {
         }
     }
 
-    @DeleteMapping(path = "user/{id}")
+    @DeleteMapping(path = "/{id}")
     @ResponseBody
     public ResponseEntity<String> deleteUser(@RequestBody Cliente cliente){
         try{
