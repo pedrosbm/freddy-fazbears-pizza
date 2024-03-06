@@ -2,9 +2,74 @@ package com.psbm.fazbearentertainment.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.psbm.fazbearentertainment.models.Cliente;
 
+@Controller
 public class UserController {
-    public List<Cliente> repository = new ArrayList<>();
+    protected List<Cliente> repository = new ArrayList<>();
+
+
+    @RequestMapping(method = RequestMethod.GET ,path = "user/{id}")
+    @ResponseBody
+    public ResponseEntity<Optional<Cliente>> getUser(@PathVariable long id){
+        try{
+            var user = repository.stream().filter(u -> u.id_clie().equals(id)).findFirst();
+            
+            //Retorna com status 200
+            return ResponseEntity.ok(user);
+        } catch(Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(404).build();
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.POST, path = "user")
+    @ResponseBody
+    public ResponseEntity<String> newUser(@RequestBody Cliente cliente){
+        try{
+            repository.add(cliente);
+            
+            return ResponseEntity.ok("Usuário cadastrado");
+        } catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(500).build();
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "user")
+    @ResponseBody
+    public ResponseEntity<String> editUser(@RequestBody Cliente cliente){
+        try{
+            repository.set(repository.indexOf(cliente.id_clie()), cliente);
+
+            return ResponseEntity.status(200).build();
+        } catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(404).build();
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE ,path = "user/{id}")
+    @ResponseBody
+    public ResponseEntity<String> deleteUser(@RequestBody Cliente cliente){
+        try{
+            repository.remove(cliente);
+            return ResponseEntity.status(200).build();
+        } catch(Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(404).build();
+
+        }
+    }
 }
+
