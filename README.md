@@ -4,6 +4,12 @@ Esse repositório é dedicado ao versionamento do meu projeto spring mvc da Fred
 
 Essa é basicamente uma api de delivery de pizza básica para o projeto web que estou trabalhando.
 
+## Integrantes
+
+>Pedro sena
+
+>Ricardo Brito
+
 ## Endpoints
 
 Verbo|Tipo da requisição|Descrição|Exemplo de uso|
