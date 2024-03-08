@@ -1,14 +1,20 @@
 package com.psbm.fazbearentertainment.models;
 
-import java.util.Random;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public record Cliente(Long id_clie, String nm_clie, String email_clie, String senha_clie) {
+@Data
+@NoArgsConstructor
+@Entity
+public class Cliente {
     
-    public Cliente(Long id_clie, String nm_clie, String email_clie, String senha_clie){
-        var key = (id_clie != null) ? id_clie : Math.abs(new Random().nextLong());
-        this.id_clie = key;
-        this.nm_clie = nm_clie;
-        this.email_clie = email_clie;
-        this.senha_clie = senha_clie;
-    }
+    @Id
+    private Long id_clie;
+    private String nm_clie;
+    private String email_clie;
+    private String senha_clie;
+
+
 }
