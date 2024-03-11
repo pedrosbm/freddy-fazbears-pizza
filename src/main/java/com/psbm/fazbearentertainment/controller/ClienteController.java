@@ -1,7 +1,5 @@
 package com.psbm.fazbearentertainment.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,43 +38,44 @@ public class ClienteController {
         }
     }
 
-    // @PostMapping
-    // @ResponseBody
-    // public ResponseEntity<String> newUser(@RequestBody Cliente cliente){
-    //     try{
-    //         repository.add(cliente);
+    @PostMapping
+    @ResponseBody
+    public ResponseEntity<String> newUser(@RequestBody Cliente cliente){
+        try{
+            repository.save(cliente);
             
-    //         return ResponseEntity.ok("Usuário cadastrado");
-    //     } catch (Exception e){
-    //         e.printStackTrace();
-    //         return ResponseEntity.status(500).build();
-    //     }
-    // }
+            return ResponseEntity.ok("Usuário cadastrado");
+        } catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(500).build();
+        }
+    }
 
-    // @PutMapping
-    // @ResponseBody
-    // public ResponseEntity<String> editUser(@RequestBody Cliente cliente){
-    //     try{
-    //         repository.set(repository.indexOf(cliente.id_clie()), cliente);
+    @PutMapping
+    @ResponseBody
+    public ResponseEntity<String> editUser(@RequestBody Cliente cliente){
+        try{
+            repository.saveAndFlush(cliente);
 
-    //         return ResponseEntity.status(200).build();
-    //     } catch (Exception e){
-    //         e.printStackTrace();
-    //         return ResponseEntity.status(404).build();
-    //     }
-    // }
+            return ResponseEntity.status(200).build();
+        } catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(404).build();
+        }
+    }
 
-    // @DeleteMapping(path = "/{id}")
-    // @ResponseBody
-    // public ResponseEntity<String> deleteUser(@RequestBody Cliente cliente){
-    //     try{
-    //         repository.remove(cliente);
-    //         return ResponseEntity.status(200).build();
-    //     } catch(Exception e){
-    //         e.printStackTrace();
-    //         return ResponseEntity.status(404).build();
+    @DeleteMapping(path = "/{id}")
+    @ResponseBody
+    public ResponseEntity<String> deleteUser(@RequestBody Cliente cliente){
+        try{
+            repository.deleteById(cliente.getId_clie());
 
-    //     }
-    // }
+            return ResponseEntity.status(200).build();
+        } catch(Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(404).build();
+
+        }
+    }
 }
 
