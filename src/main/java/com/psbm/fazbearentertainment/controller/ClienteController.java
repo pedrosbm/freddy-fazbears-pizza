@@ -66,11 +66,11 @@ public class ClienteController {
 
     @DeleteMapping(path = "/{id}")
     @ResponseBody
-    public ResponseEntity<String> deleteUser(@RequestBody Cliente cliente){
+    public ResponseEntity<String> deleteUser(@PathVariable Long id){
         try{
-            repository.deleteById(cliente.getId_clie());
+            repository.deleteById(id);
 
-            return ResponseEntity.status(200).build();
+            return ResponseEntity.ok("Usuário apagado com sucesso");
         } catch(Exception e){
             e.printStackTrace();
             return ResponseEntity.status(404).build();
@@ -78,4 +78,3 @@ public class ClienteController {
         }
     }
 }
-
