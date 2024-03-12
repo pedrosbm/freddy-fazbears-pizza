@@ -29,10 +29,18 @@ public class Cliente {
     private String senha;
 
     @JsonCreator
-    public Cliente(@JsonProperty("id_clie") Long id, @JsonProperty("nm_clie") String nome,@JsonProperty("email_clie") String email, @JsonProperty("senha_clie") String senha) {
-        this.id = id == 0 ? 0 : (new Random().nextLong(0, 100000000000000l));
+    public Cliente(@JsonProperty("nm_clie") String nome,  @JsonProperty("email_clie") String email, @JsonProperty("senha_clie") String senha) {
+        this.id = new Random().nextLong(0, 100000000000000l);
         this.nome = nome;
         this.email = email;
         this.senha = senha;
     }
+
+    @JsonCreator
+    public Cliente(@JsonProperty("id_clie")Long id,@JsonProperty("nm_clie") String nome,@JsonProperty("email_clie") String email,@JsonProperty("senha_clie") String senha) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+    }   
 }
