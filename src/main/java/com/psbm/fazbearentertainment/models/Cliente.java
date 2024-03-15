@@ -16,9 +16,9 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Cliente {
     
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonProperty("id_clie")
+    @Id 
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonProperty("id_clie")
     private Long id;
 
     @JsonProperty("nm_clie")
