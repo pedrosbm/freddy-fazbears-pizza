@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +19,7 @@ public class Cliente {
     
     @Id
     @JsonProperty("id_clie")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @JsonProperty("nm_clie")
