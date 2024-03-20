@@ -27,6 +27,7 @@ public class Cliente {
     @JsonProperty("nm_clie")
     private String nome;
 
+    @Size(min = 3)
     @JsonProperty("email_clie")
     private String email;
 
