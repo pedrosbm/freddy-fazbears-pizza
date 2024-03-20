@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Cliente {
     
-    @Id 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     @JsonProperty("id_clie")
