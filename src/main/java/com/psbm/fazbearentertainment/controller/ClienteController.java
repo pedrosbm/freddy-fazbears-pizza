@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.psbm.fazbearentertainment.models.Cliente;
 import com.psbm.fazbearentertainment.repository.ClienteRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(path = "/user")
 public class ClienteController {
@@ -40,7 +42,7 @@ public class ClienteController {
 
     @PostMapping
     @ResponseBody
-    public ResponseEntity<String> newUser(@RequestBody Cliente cliente){
+    public ResponseEntity<String> newUser(@RequestBody @Valid Cliente cliente){
         try{
             repository.save(cliente);
             
@@ -53,7 +55,7 @@ public class ClienteController {
 
     @PutMapping
     @ResponseBody
-    public ResponseEntity<String> editUser(@RequestBody Cliente cliente){
+    public ResponseEntity<String> editUser(@RequestBody @Valid Cliente cliente){
         try{
             repository.saveAndFlush(cliente);
 
