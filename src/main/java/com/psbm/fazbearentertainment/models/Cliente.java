@@ -18,20 +18,19 @@ import lombok.NoArgsConstructor;
 public class Cliente {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @NotNull
-    @JsonProperty("id_clie")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @JsonProperty("id")
     private Long id;
 
     @Size(min = 3, max = 50)
-    @JsonProperty("nm_clie")
+    @JsonProperty("nome")
     private String nome;
 
     @Size(min = 3)
-    @JsonProperty("email_clie")
+    @JsonProperty("email")
     private String email;
 
     @NotBlank
-    @JsonProperty("senha_clie")
+    @JsonProperty("senha")
     private String senha;
 }
