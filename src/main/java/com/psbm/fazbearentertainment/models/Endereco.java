@@ -1,31 +1,22 @@
 package com.psbm.fazbearentertainment.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
 @Entity
-public class Cliente {
-    
+public class Endereco {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Size(min = 3, max = 50)
-    private String nome;
+    private int cep;
 
-    @Size(min = 3)
-    private String email;
-
-    @NotBlank
-    private String senha;
+    private String logradouro;
 }

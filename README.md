@@ -6,9 +6,13 @@ Essa é basicamente uma api de delivery de pizza básica para o projeto web que 
 
 ## Integrantes
 
->Pedro sena
+> Pedro sena
 
->Ricardo Brito
+> Ricardo Brito
+
+### Diagrama de entidade
+
+<img src="./markdown/der.png">
 
 ## Endpoints
 
