@@ -20,18 +20,18 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping(path = "/user")
 public class ClienteController {
-    
+
     @Autowired
     private ClienteRepository repository;
 
     @GetMapping(path = "/{id}")
     @ResponseBody
-    public ResponseEntity<Cliente> getUser(@PathVariable long id){
-        try{
+    public ResponseEntity<Cliente> getUser(@PathVariable long id) {
+        try {
             Cliente user = repository.findById(id).get();
-            
+
             return ResponseEntity.ok(user);
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(404).build();
         }
@@ -39,12 +39,12 @@ public class ClienteController {
 
     @PostMapping
     @ResponseBody
-    public ResponseEntity<String> newUser(@RequestBody @Valid Cliente cliente){
-        try{
+    public ResponseEntity<String> newUser(@RequestBody @Valid Cliente cliente) {
+        try {
             repository.save(cliente);
-            
+
             return ResponseEntity.ok("Usuário cadastrado");
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(500).build();
         }
@@ -52,12 +52,12 @@ public class ClienteController {
 
     @PutMapping
     @ResponseBody
-    public ResponseEntity<String> editUser(@RequestBody @Valid Cliente cliente){
-        try{
+    public ResponseEntity<String> editUser(@RequestBody @Valid Cliente cliente) {
+        try {
             repository.saveAndFlush(cliente);
 
             return ResponseEntity.status(200).build();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(404).build();
         }
@@ -65,12 +65,12 @@ public class ClienteController {
 
     @DeleteMapping(path = "/{id}")
     @ResponseBody
-    public ResponseEntity<String> deleteUser(@PathVariable Long id){
-        try{
+    public ResponseEntity<String> deleteUser(@PathVariable Long id) {
+        try {
             repository.deleteById(id);
 
             return ResponseEntity.ok("Usuário apagado com sucesso");
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(404).build();
 
