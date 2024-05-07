@@ -19,7 +19,16 @@ public class AuthController {
     private ClienteRepository repository;
 
     @GetMapping
-    private ResponseEntity<Cliente> authenticate(@RequestBody Login login){
-        return repository.findByEmailAndSenha(login);
+    private ResponseEntity<Cliente> authenticate(@RequestBody Login login) {
+        try {
+            Cliente cliente = repository.findByEmailAndSenha(login).get();
+
+            return ResponseEntity.ok(cliente);
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            return ResponseEntity.notFound().build();
+        }
+
     }
 }

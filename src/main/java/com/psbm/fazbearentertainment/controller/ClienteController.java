@@ -1,7 +1,5 @@
 package com.psbm.fazbearentertainment.controller;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,11 +26,10 @@ public class ClienteController {
 
     @GetMapping(path = "/{id}")
     @ResponseBody
-    public ResponseEntity<Optional<Cliente>> getUser(@PathVariable long id){
+    public ResponseEntity<Cliente> getUser(@PathVariable long id){
         try{
-            var user = repository.findById(id);
+            Cliente user = repository.findById(id).get();
             
-            //Retorna com status 200
             return ResponseEntity.ok(user);
         } catch(Exception e){
             e.printStackTrace();
