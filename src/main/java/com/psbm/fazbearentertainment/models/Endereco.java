@@ -26,4 +26,6 @@ public class Endereco {
 
     @NotBlank
     private String bairro;
+
+    private Long clienteId;
 }
