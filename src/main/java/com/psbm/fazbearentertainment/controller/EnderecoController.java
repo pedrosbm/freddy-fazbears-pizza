@@ -2,7 +2,6 @@ package com.psbm.fazbearentertainment.controller;
 
 import java.util.ArrayList;
 
-import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +19,7 @@ public class EnderecoController {
     private EnderecoRepository repository;
     
     @GetMapping(path = "/{id}")
-    public ResponseEntity<ArrayList<Endereco>> getEnderecoByUser(@endereco){
-
+    public ResponseEntity<ArrayList<Endereco>> getEnderecoByUser(){
+        
     }
 }
